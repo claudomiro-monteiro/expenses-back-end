@@ -20,8 +20,9 @@ app.get('/list', async (request, response) => {
   const list = await prisma.expenses.findMany({
     where: {
       createdAd: {
-        lte: new Date(`${description}`) 
-      }
+        lte: new Date(`${description ?? new Date()}`),
+        // gte: new Date(`${initial ?? new Date()}`)
+      }, 
       // OR: [
       //   {
       //     description: {
@@ -39,7 +40,7 @@ app.get('/list', async (request, response) => {
       createdAd: 'desc'
     }
   })
-  // console.log(`${description}`)
+  // console.log(initialDate) 
   return response.status(200).json(list)
 })
 
