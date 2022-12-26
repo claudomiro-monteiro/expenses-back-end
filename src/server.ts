@@ -15,14 +15,15 @@ app.get('/', async (request, response) => {
 })
 
 app.get('/list', async (request, response) => {
-  const { description } = request.query
-  
+  const { initialDate } = request.query
+  const { finalDate } = request.query
+  console.log(initialDate, finalDate)
   const list = await prisma.expenses.findMany({
     where: {
       createdAd: {
-        lte: new Date(`${description ?? new Date()}`),
-        // gte: new Date(`${initial ?? new Date()}`)
-      }, 
+        gte: new Date(`${initialDate ?? new Date('2022-01-01')}`),
+        lte: new Date(`${finalDate ?? new Date()}`),
+      },
       // OR: [
       //   {
       //     description: {
@@ -41,6 +42,7 @@ app.get('/list', async (request, response) => {
     }
   })
   // console.log(initialDate) 
+  // console.log(finalDate)  
   return response.status(200).json(list)
 })
 
