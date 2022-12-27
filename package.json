@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
+    "start": "node build/server.js",
     "dev": "tsnd --exit-child src/server.ts"
   },
   "keywords": [],
