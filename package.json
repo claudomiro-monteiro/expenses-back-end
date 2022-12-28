@@ -2,11 +2,11 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "api/index.js",
+  "main": "index.js",
   "scripts": {
     "build": "tsc",
     "start": "node build/index.js",
-    "dev": "tsnd --exit-child api/index.ts"
+    "dev": "tsnd --exit-child index.ts"
   },
   "keywords": [],
   "author": "",
