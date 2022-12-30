@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const client_1 = require("@prisma/client");
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
+const PORT = 3333;
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use((0, cors_1.default)());
@@ -26,32 +27,17 @@ app.get('/', (request, response) => __awaiter(void 0, void 0, void 0, function* 
 app.get('/list', (request, response) => __awaiter(void 0, void 0, void 0, function* () {
     const { initialDate } = request.query;
     const { finalDate } = request.query;
-    console.log(initialDate, finalDate);
     const list = yield prisma.expenses.findMany({
         where: {
             createdAd: {
                 gte: new Date(`${initialDate !== null && initialDate !== void 0 ? initialDate : new Date('2022-01-01')}`),
                 lte: new Date(`${finalDate !== null && finalDate !== void 0 ? finalDate : new Date()}`),
             },
-            // OR: [
-            //   {
-            //     description: {
-            //       startsWith: `${description ?? ''}`
-            //     }
-            //   },
-            //   {
-            //     description: {
-            //       endsWith: `${description ?? ''}`
-            //     }
-            //   }
-            // ]
         },
         orderBy: {
             createdAd: 'desc'
         }
     });
-    // console.log(initialDate) 
-    // console.log(finalDate)  
     return response.status(200).json(list);
 }));
 app.post('/', (request, response) => __awaiter(void 0, void 0, void 0, function* () {
@@ -66,4 +52,6 @@ app.post('/', (request, response) => __awaiter(void 0, void 0, void 0, function*
     });
     return response.status(201).json(expense);
 }));
-app.listen(3333);
+app.listen(PORT, () => {
+    console.log(`Api running in PORT ${PORT}`);
+});
