@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "start": "node build/index.js",
-    "dev": "tsnd --exit-child index.ts"
+    "dev": "tsnd --exit-child src/index.ts"
   },
   "keywords": [],
   "author": "",

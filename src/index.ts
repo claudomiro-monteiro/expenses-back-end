@@ -2,6 +2,7 @@ import { PrismaClient } from '@prisma/client'
 import express from 'express'
 import cors from 'cors'
 
+const PORT = 3333
 const app = express()
 app.use(express.json())
 app.use(cors())
@@ -61,4 +62,6 @@ app.post('/', async (request, response) => {
   return response.status(201).json(expense)
 })
 
-app.listen(3333)
+app.listen(PORT, () => {
+  console.log(`Api running in PORT ${PORT}`)
+})
