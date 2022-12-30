@@ -53,5 +53,3 @@ app.post('/', async (request, response) => {
 app.listen(PORT, () => {
   console.log(`Api running in PORT ${PORT}`)
 })
-
-module.exports = app;
