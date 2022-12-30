@@ -32,7 +32,7 @@ app.get('/list', async (request, response) => {
   })
 
   return response.status(200).json(list)
-  
+
 })
 
 app.post('/', async (request, response) => {
@@ -53,3 +53,5 @@ app.post('/', async (request, response) => {
 app.listen(PORT, () => {
   console.log(`Api running in PORT ${PORT}`)
 })
+
+module.exports = app;
