@@ -9,7 +9,7 @@ app.use(cors())
 
 const prisma = new PrismaClient({})
 
-export default app.get('/', async (request, response) => {
+app.get('/', async (request, response) => {
   const expense = await prisma.expenses.findMany()
 
   return response.json(expense)
