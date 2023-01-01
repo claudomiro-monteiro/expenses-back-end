@@ -18,25 +18,25 @@ app.get('/', async (request, response) => {
   return response.json(expense)
 })
 
-// app.get('/list', async (request, response) => {
-//   const { initialDate } = request.query
-//   const { finalDate } = request.query
+app.get('/list', async (request, response) => {
+  const { initialDate } = request.query
+  const { finalDate } = request.query
 
-//   const list = await prisma.expenses.findMany({
-//     where: {
-//       createdAd: {
-//         gte: new Date(`${initialDate ?? new Date('2022-01-01')}`),
-//         lte: new Date(`${finalDate ?? new Date()}`),
-//       },
-//     },
-//     orderBy: {
-//       createdAd: 'desc'
-//     }
-//   })
+  const list = await prisma.expenses.findMany({
+    where: {
+      createdAd: {
+        gte: new Date(`${initialDate ?? new Date('2022-01-01')}`),
+        lte: new Date(`${finalDate ?? new Date()}`),
+      },
+    },
+    orderBy: {
+      createdAd: 'desc'
+    }
+  })
 
-//   return response.status(200).json(list)
+  return response.status(200).json(list)
 
-// })
+})
 
 // app.post('/', async (request, response) => {
 //   const { description, type, category, price } = request.body
