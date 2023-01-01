@@ -8,9 +8,9 @@ app.use(express.json())
 app.use(cors())
 
 const prisma = new PrismaClient({})
-app.get('/', (request, response) => {
-  response.send('Hello World')
-})
+// app.get('/', (request, response) => {
+//   response.send('Hello World')
+// })
 
 app.get('/', async (request, response) => {
   const expense = await prisma.expenses.findMany()
