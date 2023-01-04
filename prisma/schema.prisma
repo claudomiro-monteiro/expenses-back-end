@@ -1,21 +1,20 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
-generator client {
-  provider        = "prisma-client-js"
-  previewFeatures = ["fullTextSearch"]
-}
-
 datasource db {
-  provider = "sqlite"
+  provider = "mongodb"
   url      = env("DATABASE_URL")
 }
 
+generator client {
+  provider        = "prisma-client-js"
+}
+
 model Expenses {
-  id          Int      @id @default(autoincrement())
+  id          String      @id @default(auto()) @map("_id") @db.ObjectId
   description String
   type        String
   category    String
   price       Int
-  createdAd   DateTime @default(now())
+  createdAt   DateTime @default(now())
 }

@@ -29,13 +29,13 @@ app.get('/list', (request, response) => __awaiter(void 0, void 0, void 0, functi
     const { finalDate } = request.query;
     const list = yield prisma.expenses.findMany({
         where: {
-            createdAd: {
+            createdAt: {
                 gte: new Date(`${initialDate !== null && initialDate !== void 0 ? initialDate : new Date('2022-01-01')}`),
                 lte: new Date(`${finalDate !== null && finalDate !== void 0 ? finalDate : new Date()}`),
             },
         },
         orderBy: {
-            createdAd: 'desc'
+            createdAt: 'desc'
         }
     });
     return response.status(200).json(list);
