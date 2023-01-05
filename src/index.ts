@@ -12,7 +12,7 @@ const prisma = new PrismaClient({})
 app.get('/', async (request, response) => {
   const expense = await prisma.expenses.findMany()
 
-  return response.json(expense)
+  return response.json(expense) 
 })
 
 app.get('/list', async (request, response) => {
