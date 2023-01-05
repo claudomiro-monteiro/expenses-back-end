@@ -22,6 +22,7 @@ app.use((0, cors_1.default)());
 const prisma = new client_1.PrismaClient({});
 app.get('/', (request, response) => __awaiter(void 0, void 0, void 0, function* () {
     const expense = yield prisma.expenses.findMany();
+    console.log(request.body);
     return response.status(200).json(expense);
 }));
 app.get('/list', (request, response) => __awaiter(void 0, void 0, void 0, function* () {
