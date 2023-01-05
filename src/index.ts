@@ -9,12 +9,12 @@ app.use(cors())
 
 const prisma = new PrismaClient({})
 
-// app.get('/', async (request, response) => {
-//   const expense = await prisma.expenses.findMany()
+app.get('/', async (request, response) => {
+  const expense = await prisma.expenses.findMany()
 
-//   console.log(request.body)
-//   return response.status(200).json(expense) 
-// })
+  console.log(request.body)
+  return response.status(200).json(expense) 
+})
 
 app.get('/list', async (request, response) => {
   const { initialDate } = request.query
